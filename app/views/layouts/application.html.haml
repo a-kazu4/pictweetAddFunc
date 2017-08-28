@@ -21,16 +21,20 @@
   %body
     %header.header
       .header__bar.row
-        %h1.grid-6
+        %h1.grid-4
           = link_to 'Pics', root_path
         - if user_signed_in?
-          .user_nav.grid-6
-            %span
-              = current_user.nickname
-              %ul.user__info
-                %li
-                  = link_to 'my page', user_path(current_user), method: :get
-                  = link_to 'sign out', destroy_user_session_path, method: :delete
+          .user_nav.grid-8
+            .grid-6
+              = form_tag('search', method: :get) do
+                %input.search_box{ placeholder: 'search', type: 'text', name: 'keyword' }
+            .grid-6
+              %span
+                = current_user.nickname
+                %ul.user__info
+                  %li
+                    = link_to 'my page', user_path(current_user), method: :get
+                    = link_to 'sign out', destroy_user_session_path, method: :delete
         - else
           .grid-6
             = link_to 'sign in', new_user_session_path, class: 'post'
