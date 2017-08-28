@@ -1,4 +1,10 @@
 .contents.row
+  .container.tweet_post_container
+    = form_for @tweet, url: { action: 'post' }, html: { class: 'tweet_post' } do |f|
+      = f.text_field :image, placeholder: 'Image Url', class: 'tweet_post__image'
+      = f.text_field :text, cols: '30', placeholder: 'text', rows: '1', class: 'tweet_post__text'
+      = f.submit 'POST', class: 'tweet_post__post_button'
+
   - @tweets.each do |tweet|
     = render partial: "tweets/tweet", locals: { tweet: tweet }
   = paginate(@tweets)
