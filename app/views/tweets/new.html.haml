@@ -1,0 +1,7 @@
+.contents.row
+  .container
+    = form_tag('/tweets', method: :post) do
+      %h3 投稿する
+      %input{ placeholder: 'Image Url', type: 'text', name: 'image'}
+      %textarea{cols: '30', name: 'text', placeholder: 'text', rows: '10'}
+      %input{type: 'submit', value: 'SENT'}
