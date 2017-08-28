@@ -1,0 +1,32 @@
+.tweet_post_container {
+
+  padding: 5px;
+  border-radius: 5px;
+
+  .tweet_post {
+    .tweet_post__image {
+      width: 15%;
+      float:left;
+    }
+
+    .tweet_post__text {
+      width: 75%;
+      @include boxBase(5px 0 5px,5px);
+      line-height: 35px;
+    }
+
+    .tweet_post__post_button {
+      @extend .transition;
+      background-color: $accent;
+      border-radius: 20px;
+      color: #fff;
+      padding: 5px;
+      width: 8%;
+      font-size: 10px;
+      margin-top: 15px;
+      &:hover {
+        background-color: lighten($accent, 10%);
+      }
+    }
+  }
+}
