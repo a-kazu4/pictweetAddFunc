@@ -1,17 +1,9 @@
 class TweetsController < ApplicationController
 
-  def new
-  end
-
-  def create
-    Tweet.create(image: tweet_params[:image], text: tweet_params[:text], user_id: current_user.id)
-    redirect_to action: :index
-  end
-
   def destroy
     tweet = Tweet.find(params[:id])
     tweet.destroy if current_user.id == tweet.user_id
-    redirect_to action: :index
+    redirect_to root_path
   end
 
   def edit
@@ -21,7 +13,7 @@ class TweetsController < ApplicationController
   def update
     tweet = Tweet.find(params[:id])
     tweet.update(tweet_params) if current_user.id == tweet.user_id
-    redirect_to action: :index
+    redirect_to root_path
   end
 
   def show
