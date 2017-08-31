@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170530042553) do
+ActiveRecord::Schema.define(version: 20170829042814) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "text",       limit: 65535
@@ -20,6 +20,15 @@ ActiveRecord::Schema.define(version: 20170530042553) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "friendships", id: false, force: :cascade do |t|
+    t.integer "follower_id", limit: 4
+    t.integer "followee_id", limit: 4
+  end
+
+  add_index "friendships", ["followee_id"], name: "index_friendships_on_followee_id", using: :btree
+  add_index "friendships", ["follower_id", "followee_id"], name: "index_friendships_on_follower_id_and_followee_id", unique: true, using: :btree
+  add_index "friendships", ["follower_id"], name: "index_friendships_on_follower_id", using: :btree
 
   create_table "tweets", force: :cascade do |t|
     t.text     "text",       limit: 65535
