@@ -17,4 +17,9 @@ class User < ActiveRecord::Base
                                    dependent: :destroy
   has_many :followings, through: :following_friendships
 
+  has_many :follower_friendships, class_name:  'Friendship',
+                                  foreign_key: 'followee_id',
+                                  dependent: :destroy
+  has_many :followers, through: :follower_friendships
+
 end
