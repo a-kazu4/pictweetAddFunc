@@ -1,7 +1,22 @@
 .contents.row
-  %p
-    = @nickname
-    さんの投稿一覧
+  .container
+    %p
+      = @user.nickname
+      さんの投稿一覧
+    %p
+      フォロー数：
+      = @followings.size
+    %ol
+      - @followings.each do |following|
+        %li
+          = link_to following.nickname, user_path(following)
+    %p
+      フォロワー数：
+      = @followers.size
+    %ol
+      - @followers.each do |follower|
+        %li
+          = link_to follower.nickname, user_path(follower)
   - @tweets.each do |tweet|
     = render partial: "tweets/tweet", locals: { tweet: tweet }
 
