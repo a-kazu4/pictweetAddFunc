@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20170829042814) do
     t.datetime "updated_at"
   end
 
-  create_table "friendships", id: false, force: :cascade do |t|
+  create_table "friendships", force: :cascade do |t|
     t.integer "follower_id", limit: 4
     t.integer "followee_id", limit: 4
   end
