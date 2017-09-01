@@ -22,4 +22,16 @@ class User < ActiveRecord::Base
                                   dependent: :destroy
   has_many :followers, through: :follower_friendships
 
+  def following?(other_user)
+    following_friendships.find_by(followee_id: other_user.id)
+  end
+
+  def follow!(other_user)
+    following_friendships.create!(followee_id: other_user.id)
+  end
+
+  def unfollow!(other_user)
+    following_friendships.find_by(followee_id: other_user.id).destroy
+  end
+
 end
