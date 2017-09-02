@@ -1,0 +1,12 @@
+.contents.row.following_or_followers
+  .container.user_show_profile
+    %p
+      = link_to @user.nickname, user_path(@user), class: 'user_show_profile__name'
+  %p
+    %span
+      = @followers.size
+    followers&emsp;&emsp;
+  %ul
+    - @followers.each do |follower|
+      %li.container.user_bar
+        = link_to follower.nickname, user_path(follower)
