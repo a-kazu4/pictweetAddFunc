@@ -1,0 +1,16 @@
+.user_show_profile {
+  margin: 0;
+  padding: 10px 20px;
+
+  p {
+    text-align: center;
+    span {
+      font-size: 20px;
+      font-weight: bold;
+    }
+  }
+  .user_show_profile__name {
+    margin: 0;
+    font-size: 30px;
+  }
+}
